@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+
+ 	<context:annotation-config/>
+
+	<bean id = "eventSuggestApp" class = "com.eventsearch.helpers.EventSuggestApp">
+		<property name="appId" value = "817269844961325" />
+		<property name = "appSecret" value = "9fdc0b3f0498f9a0786df4653f257aeb" />
+	</bean>
+	
+	<bean id = "properties" class = "com.eventsearch.helpers.Properties">
+		<property name = "user_agent" value = "Mozilla/5.0" />
+		<property name = "app_home" value = "http://localhost:8080/EventSearch/login.io" />
+		<property name = "app_scope" value = "email,offline_access,user_about_me,user_birthday,read_friendlists" />
+		<property name = "orchestarteAPIKey" value = "a2419c62-bb3e-4cda-8499-429503a9ba6f"/>
+	</bean>
+	
+</beans>

@@ -1,0 +1,54 @@
+body, html {
+	margin: 0%;
+	padding:0%;
+	width: 100%;
+}
+
+
+.ext_container {
+	width: 100%;
+	display: inline-block;
+}
+
+header {
+	display:inline-block;
+	width:100%;
+	margin: 0% 0% 0% 0%;
+	position: fixed;
+	top:0px;
+	left: 0px;
+	z-index: 999;
+	box-shadow: 0 0 5px rgba(0,0,0,0.6);
+	padding:2% 2% 2% 2%;
+	
+}
+header #fb_login_button{
+	display: inline-block;
+	width: 9%;
+	border:1px solid gray;
+	border-radius:10px;
+}
+
+#fb_profile_pic{
+	width:50px; 
+	height: 50px;
+	background: green;
+	float: left;
+	border-top-left-radius:10px;
+	border-bottom-left-radius:10px;
+}
+
+#lltext{
+	float: right;
+	vertical-align: middle;
+	margin-right: 10.5%;
+	margin-top:14%;
+}
+#left_i_c{
+	width:90%;
+	float: left;
+	height:100px;
+	background-color: red;
+	margin:70px 15% 0 5%;
+	
+}
