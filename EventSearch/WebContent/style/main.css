@@ -2,8 +2,14 @@ body, html {
 	margin: 0%;
 	padding:0%;
 	width: 100%;
+	font-family: 'Open Sans', sans-serif;
+	color: rgba(0,0,0,0.6);
 }
 
+a{
+	text-decoration: none;
+	
+}
 
 .ext_container {
 	width: 100%;
@@ -19,36 +25,190 @@ header {
 	left: 0px;
 	z-index: 999;
 	box-shadow: 0 0 5px rgba(0,0,0,0.6);
-	padding:2% 2% 2% 2%;
+	padding:1.5% 2% 1.5% 2%;
+	background-color: white;
 	
 }
-header #fb_login_button{
-	display: inline-block;
-	width: 9%;
+header #fb_login_button.big{
+	display:inline-block;
+	width: 20%;
+	border:1px solid #0066CC;
+	border-radius:5px;
+	vertical-align: middle;
+	color:#0066cc;
+	font-size: 90%;
+	font-weight: lighter;
+}
+header #fb_login_button.small{
+	display:inline-block;
+	width: 20%;
 	border:1px solid gray;
 	border-radius:10px;
+	vertical-align: middle;
 }
 
+#fb_user_button{
+	display:inline-block;
+	width: 20%;
+	border:1px solid #0066CC;
+	border-radius:5px;
+	vertical-align: middle;
+	color:#0066cc;
+	font-size: 90%;
+	font-weight: lighter;
+}
 #fb_profile_pic{
 	width:50px; 
 	height: 50px;
-	background: green;
+	background: url("../images/fb_icon.svg") no-repeat;
+	background-size:contain;
 	float: left;
-	border-top-left-radius:10px;
-	border-bottom-left-radius:10px;
+	vertical-align: middle;
 }
 
 #lltext{
-	float: right;
+	float: left;
 	vertical-align: middle;
-	margin-right: 10.5%;
-	margin-top:14%;
+	margin-top:5.5%;
+	margin-left:15%;
+	
+}
+
+#right_header {
+	display: inline-block;
+	font-weight: lighter;
+	color:rgba(0,0,0,0.6);
+	float:right;
+	margin-right: 18%;
+	margin-top:0.9%;
+}
+#hellotext{
+	float: left;
+	vertical-align: middle;
+	margin-top:5.5%;
+	margin-left:17%;
+	
+}
+
+
+#int_container {
+	
 }
 #left_i_c{
-	width:90%;
-	float: left;
-	height:100px;
-	background-color: red;
-	margin:70px 15% 0 5%;
+	width:100%;
+	display: inline-block;
+	margin-top: 10%;
+	padding:0% 2% 2% 2%;
+}
+#int_container{
+	display: inline-block;
+}
+.input_1{
+	width: 20%;
+	padding: 1%;
+	border: 1px solid #0066CC;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius:5px;
+}
+
+
+.button_1 {
+	padding:1.07%;
+	margin-left:-5px;
+	background: #0066CC;
+	color: white;
+	border: 0;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius:5px;
+	cursor: pointer;
+}
+
+#tag_field {
+	width: 65%;
+	height:177px;
+	background-color: rgba(0,0,0,0.1);
+	float: right;
+	margin: -9.5% 5% 0 0%;
+	paddin:2%
 	
+}
+
+.readonly{
+	color:gray;
+}
+
+.tag {
+	background: #0066CC;
+	opacity:0.6;
+	color:white;
+	margin-right: 2%;
+	border:0;
+	width: 10%;
+	font-size: 100%;
+	font-weight: ligter;
+	padding:0.6%;
+}
+
+
+
+#setKeyWords {
+	float:right;
+	margin:1.19% -65% 0 0;
+	border-bottom-right-radius: 0px;
+	border-top-right-radius:0px;
+}
+
+#trending_events{
+	width:100%;
+	padding:2% 2% 2% 2%;
+}
+
+#tagged_events{
+	width:100%;
+	padding:2% 2% 2% 2%;
+}
+
+#getTrendingEvents{
+	border-bottom-right-radius: 0px;
+	border-top-right-radius:0px;
+	margin-top:7%;
+}
+#getTaggedEvents{
+	border-bottom-right-radius: 0px;
+	border-top-right-radius:0px;
+	margin-top:7%;
+}
+
+.right{
+	float: right;
+	margin-right: 7%;
+	font-weight: lighter;
+	font-size: 90%;
+}
+
+table{
+	margin-top:5%;
+	font-size:100%;
+	font-weight:lighter;
+	width:90%;
+	text-align: left;
+	border-collapse: collapse;
+}
+th{
+	font-size: 110%;
+	font-weight: normal;
+	border-bottom: 1px solid rgba(0,0,0,0.7);
+	
+}
+td{
+	border-bottom: 1px dotted rgba(0,0,0,0.7);
+	padding:2% 0 2% 0;
+	word-wrap:break-word;
+}
+tr#desc{
+	height:100px;
+	display:none;
+}
+#drop{
+	cursor: pointer;
 }

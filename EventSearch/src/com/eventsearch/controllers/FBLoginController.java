@@ -14,23 +14,24 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.eventsearch.debservice.DBQuery;
 import com.eventsearch.entity.User;
 import com.eventsearch.helpers.ContextHelper;
 import com.eventsearch.helpers.EventSuggestApp;
-import com.eventsearch.helpers.HttpRequestHelper;
 import com.eventsearch.helpers.HttpsRequestHelper;
 import com.eventsearch.helpers.Properties;
+import com.eventsearch.services.UserService;
 
 @Controller
 public class FBLoginController {
+	
 	
 	static final Logger LOG = Logger.getLogger(FBLoginController.class);
 	
 	EventSuggestApp app = (EventSuggestApp)ContextHelper.getBean("eventSuggestApp");
 	Properties props = (Properties)ContextHelper.getBean("properties");
+
 	
 
 	@RequestMapping(value = "/getFBWidget.io")
@@ -38,7 +39,7 @@ public class FBLoginController {
 		
 		String dialogRequest = "https://facebook.com/dialog/oauth?client_id="+app.getAppId()+"&redirect_uri="+props.getApp_home()+"&scope="+props.getApp_scope();
 		
-		String html = "<a href = "+ dialogRequest +">Login</a>";
+		String html = "<a href = "+ dialogRequest +">Facebook Login</a>";
 		
 		res.setContentType("text/html");
 		
@@ -53,7 +54,7 @@ public class FBLoginController {
 	}
 	
 	@RequestMapping("/login.io")
-	public ModelAndView dpFBLogin(HttpServletRequest req, HttpServletResponse res) throws MalformedURLException {
+	public void dpFBLogin(HttpServletRequest req, HttpServletResponse res) throws MalformedURLException {
 		
 		String code = req.getParameter("code");
 		String access_token = null;
@@ -61,7 +62,6 @@ public class FBLoginController {
 		String appSecret = app.getAppSecret();
 		
 		if(code == null || code.isEmpty()) {
-			// error code
 		}
 		try {
 			String oauthRequest = "https://graph.facebook.com/oauth/access_token?client_id="+appId+
@@ -86,7 +86,7 @@ public class FBLoginController {
 
 		String graph = null;
 
-		String userRequest = "https://graph.facebook.com//me?"+access_token;
+		String userRequest = "https://graph.facebook.com/me?fields=id,first_name,last_name,picture&"+access_token;
 
 		try {
 			graph = HttpsRequestHelper.sendGet(userRequest);
@@ -101,9 +101,6 @@ public class FBLoginController {
 		JSONObject profile = null;
 		try {
 			profile = new JSONObject(graph);
-			System.out.println(profile);
-			session.setAttribute("id",profile.get("id"));
-			session.setAttribute("first_name",profile.get("first_name"));
 		} 
 		catch (JSONException e) {
 		
@@ -111,12 +108,17 @@ public class FBLoginController {
 		
 		User loggedInUser = new User();
 		loggedInUser.setUpUser(profile);
+		System.out.println(loggedInUser);
 		DBQuery.pingAndSaveUser(loggedInUser);
+		session.setAttribute("user", loggedInUser);
+			
+		//redirect to landing page
 		
-		ModelAndView mav = new ModelAndView();
+		try {
+			res.sendRedirect("./home.io");
+		} catch (IOException e) {
+		}
 		
-		mav.setViewName("/pages/landing.jsp");
-		return mav;
 	}
-
+	
 }

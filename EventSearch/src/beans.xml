@@ -19,8 +19,11 @@ http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 	<bean id = "properties" class = "com.eventsearch.helpers.Properties">
 		<property name = "user_agent" value = "Mozilla/5.0" />
 		<property name = "app_home" value = "http://localhost:8080/EventSearch/login.io" />
-		<property name = "app_scope" value = "email,offline_access,user_about_me,user_birthday,read_friendlists" />
+		<property name = "app_scope" value = "email,user_about_me,user_birthday,user_friends,read_friendlists,user_events,user_groups" />
 		<property name = "orchestarteAPIKey" value = "a2419c62-bb3e-4cda-8499-429503a9ba6f"/>
+	</bean>
+	
+	<bean id = "userService" class = "com.eventsearch.services.UserService">
 	</bean>
 	
 </beans>

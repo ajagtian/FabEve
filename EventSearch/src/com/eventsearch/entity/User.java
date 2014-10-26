@@ -1,5 +1,6 @@
 package com.eventsearch.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
@@ -9,25 +10,38 @@ public class User {
 	
 	private String id;
 	private String first_name;
-	private String email;
-	private String name;
-	private String gender;
 	private String last_name;
+	private String picture;
 	private List<Event> userEvents;
 	private List<User> friends;
+	private ArrayList<String> keywords;
 	
 	
 	public void setUpUser(JSONObject profile) {
 		try {
 			this.id = profile.getString("id");
-			this.first_name = profile.getString("first_name");
-			this.last_name = profile.getString("last_name");
-			this.email = profile.getString("email");
-			this.name = profile.getString("email");
-			this.gender = profile.getString("gender");
-		} 
+		}
 		catch (JSONException e) {
-		}	
+				// TODO: handle exception
+		}
+		try{
+			this.first_name = profile.getString("first_name");
+		}
+		catch(JSONException e){
+			
+		}
+		try {
+			this.last_name = profile.getString("last_name");
+		}
+		catch(JSONException e ) {
+			
+		}
+		try{
+			this.picture = profile.getJSONObject("picture").getJSONObject("data").getString("url");
+		}
+		catch(JSONException e) {
+			
+		}
 	}
 	public String getId() {
 		return id;
@@ -40,24 +54,6 @@ public class User {
 	}
 	public void setFirst_name(String first_name) {
 		this.first_name = first_name;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 	public String getLast_name() {
 		return last_name;
@@ -77,15 +73,31 @@ public class User {
 	public void setFriends(List<User> friends) {
 		this.friends = friends;
 	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", first_name=" + first_name + ", email="
-				+ email + ", name=" + name + ", gender=" + gender
-				+ ", last_name=" + last_name + ", userEvents=" + userEvents
-				+ ", friends=" + friends + "]";
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 	
-
+	public ArrayList<String> getKeywords() {
+		return keywords;
+	}
+	public void setKeywords(ArrayList<String> keywords) {
+		this.keywords = keywords;
+	}
+	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", first_name=" + first_name + ", last_name="
+				+ last_name + ", picture=" + picture + ", userEvents="
+				+ userEvents + ", friends=" + friends + ", keywords=~"
+				+ keywords + "~]";
+	}
+	
+	
+	
+	
 	
 	
 
