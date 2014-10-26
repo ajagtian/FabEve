@@ -97,7 +97,14 @@ public class EventController {
 							JSONObject event = (JSONObject)eventData.get(i);
 							id = event.getString("id");
 							name = event.getString("name");
+							event_location= "";
+							try{
 							event_location = event.getString("location");
+							}
+							catch(JSONException e){
+								System.out.println(e.getMessage());
+							}
+
 							start_time = end_time = "";
 							try{
 								start_time = event.getString("start_time");
@@ -106,7 +113,14 @@ public class EventController {
 							catch(JSONException e) {
 								System.out.println(e.getMessage());
 							}
-							desc = event.getString("description");
+							desc = "";
+							try{
+								desc = event.getString("description");
+							}							
+							catch(JSONException e){
+								System.out.println(e.getMessage());
+							}
+
 							lati = longi = 0.0;
 							goingCount = 0;
 							try{
